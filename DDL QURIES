@@ -1,0 +1,92 @@
+create database HINDUSTAN;
+use HINDUSTAN;
+
+create table batch(rollno int, name varchar(10));
+desc batch;
+insert into batch values (412,"Vidhya");
+select*from batch;
+
+create table batch2(rollno int primary key , name varchar(10));
+desc batch2;
+insert into batch2 values(412,"Vidhya");
+insert into batch2 values(413,"Swetha");
+insert into batch2 values(414,"Tharshi");
+select*from batch2;
+
+create table batch3(regno int auto_increment primary key , name varchar(10));
+desc batch3;
+insert into batch3 values(145,"Ram");
+insert into batch3(name) values("Hari");
+select*  from batch3;
+
+create table batch4(regno int primary key , name varchar(10), dept varchar(10) default"XXX");
+desc batch4;
+insert into batch4 values(147,"Priya","CSE");
+insert into batch4(regno,name) values(148,"Mathi");
+insert into batch4(regno,name) values(149,"Anu");
+select*from batch4;
+
+create table batch5(regno int, name varchar(10),subjects set("Python","Java","C","C++"));
+desc batch5;
+insert into batch5 values(150,"Abi","C,C++");
+insert into batch5 values(150,"Guna","Python,Java");
+insert into batch5 values(150,"Harish","Python,C");
+insert into batch5 values(150,"Arun","Java");
+select*from batch5;
+
+create table batch6(regno int,name varchar(10),gender enum("Male","Female"));
+desc batch6;
+insert into batch6 values(154,"Maya","female");
+insert into batch6 values(155,"Anu","Female");
+insert into batch6 values(156,"Mathisri","feale");
+select*from batch6;
+
+create table batch7(regno int,name varchar(10),sub1 int,sub2 int, total int generated always as (sub1+sub2));
+desc batch7;
+insert into batch7(regno,name,sub1,sub2) values(157,"Sahana",99,98);
+select*from batch7;
+
+create table batch8(regno int,name varchar(10));
+select*from batch;
+select*from batch8;
+
+drop table batch8;
+
+create table batch8 select*from batch;
+select*from batch8;
+
+create table batch9(regno int auto_increment primary key , name varchar(10) unique);
+desc batch9;
+insert into batch9 values (158,"Prassanna");
+insert into batch9(name) values ("Kavya");
+insert into batch9(name) values ("Prassanna");
+select*from batch9;
+
+create table batch10 select * from batch2 where 1=0;
+desc batch10;
+select* from batch10;
+
+truncate table batch4;
+select* from batch4;
+
+rename table batch to batch1;
+select * from batch1;
+
+show tables;
+
+alter table batch1 add age int;
+desc batch1;
+select*from batch1;
+
+alter table batch1 add(gen varchar(10),dept varchar(10));
+desc batch1;
+select * from batch1;
+insert into batch1(age,gen,dept) values(20,"Female","CSE");
+select * from batch1;
+
+alter table batch1 modify dept varchar(100);
+desc batch1;
+insert into batch1 values(1,"Vidya",20,"Female","Computer Science and Engineering");
+select * from batch1;
+
+drop table batch4,batch5;
