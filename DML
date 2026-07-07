@@ -42,5 +42,14 @@ when age>40 then 120000
 when age>30 then 110000 
 else 100000 
 end;
+
+delete from employees1 where id =110;
+delete from employees1 where id in (111,114,115);
+delete from employees1 where loc="Hyderabad";
+delete from employees1 where name like "T%";
+delete from employees1 order by age limit 1;
+delete from employees1 order by age desc limit 1;
+delete from employees1 where not loc="Chennai";
+delete * from employees1;
 select*from employees1;
 set sql_safe_updates=0;
